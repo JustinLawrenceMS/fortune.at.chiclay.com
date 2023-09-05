@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('sooth/v1/fortune', [SoothController::class, 'getSooth']);
+Route::get('v1/sooths/fortune', [SoothController::class, 'getSooth']);
 
-Route::get('sooth/v1/all', [SoothController::class, 'getAllSooths']);
+Route::get('v1/sooths/all', [SoothController::class, 'getAllSooths']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
