@@ -62,17 +62,17 @@
 			<div class="col">
 				<div class="card">
 					<div class="card-title">
-						<img class="sooth-image" src="https://sooth.buttered.app/storage/salome.jpg" alt="painting of mystical woman by Gustav Klimt"></div>
+						<img class="sooth-image" src="{{ url('/storage/salome.jpg') }}" alt="painting of mystical woman by Gustav Klimt"></div>
 					<p>SoothSayerAPI generates a line from the public domain medieval Persian work, the Rubaiyyat.</p>
 					<p>To use it, do this:
 					</p>
-					<p><a href="https://sooth.buttered.app/api/sooth/v1/fortune">https://sooth.buttered.app/api/sooth/v1/fortune</a> This generates a random line from the Rubaiyyat.
+					<p><a href="{{ url('/api/v1/sooths/fortune') }}">{{ url('/api/v1/sooths/fortune') }}</a> This generates a random line from the Rubaiyyat.
 					</p>
-					<p><a href="https://sooth.buttered.app/api/sooth/v1/all">https://sooth.buttered.app/api/sooth/v1/all</a> This dumps the entire Rubaiyyat as it presently stands in our database.
+					<p><a href="{{ url('/api/v1/sooths/all') }}">{{ url('/api/v1/sooths/all') }}</a> This dumps the entire Rubaiyyat as it presently stands in our database.
 					</p>
 				<p>SoothSayerAPI is for entertainment purposes only, and no guarantees or warranties are made in regards to this product.</p>
 				<p>SoothSayerAPI is free and always will be.  You are free to use it commercially, modify it, and share it without cost or attribution.</p>
-					<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://sooth.buttered.app">SoothSayerAPI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/justin-lawrence-ms/">Justin Lawrence, MS</a> is marked with <a href="http://creativecommons.org/publicdomain/zero/1.0?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1"></a></p>
+					<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="{{url('/')}}">SoothSayerAPI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.linkedin.com/in/justin-lawrence-ms/">Justin Lawrence, MS</a> is marked with <a href="http://creativecommons.org/publicdomain/zero/1.0?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1"></a></p>
 
 
 					<h4>Today's fortune.</h4>
