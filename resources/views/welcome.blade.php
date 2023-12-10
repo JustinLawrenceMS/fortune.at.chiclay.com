@@ -13,6 +13,10 @@
 	
 	<!-- Styles -->
 	<style>
+		p{
+			padding-left: 10px;
+			padding-right: 10px;
+		}
 	    .card{
 		/*
   			width: 350px;
