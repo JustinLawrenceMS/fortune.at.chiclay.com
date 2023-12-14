@@ -10,27 +10,27 @@ class SoothController extends Controller
 {
 	/**
 	 * retrieve the fortune
-     *
-     * return @string (json object)
-     *
-     */
+	 *
+	 * return @string (json object)
+	 *
+	 */
 	public function getSooth(){
 
 		$sooth_said = Sooth::find(rand(1,106));
 
 		if(!is_null($sooth_said)){
-			
+
 			return $sooth_said->sooth;
 
 		}
 		else{
 
 			$this->getSooth();
-		
+
 		}
 	}
 	public function getAllSooths(){
-		
+
 		return Sooth::all()->pluck('sooth');
 
 	}
@@ -47,15 +47,15 @@ class SoothController extends Controller
 		return response()->json($sooths);
 	}
 
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-	$sooth = json_encode($this->getSooth());
-	return view('welcome')->with('sooth', $sooth);
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		$sooth = json_encode($this->getSooth());
+		return view('welcome')->with('sooth', $sooth);
+	}
 
 }
