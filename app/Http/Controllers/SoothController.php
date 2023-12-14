@@ -18,21 +18,15 @@ class SoothController extends Controller
 
 		$sooth_said = Sooth::find(rand(1,106));
 
-		if(!is_null($sooth_said)){
-
+		if (!is_null($sooth_said)) {
 			return $sooth_said->sooth;
-
-		}
-		else{
-
+		} else {
 			$this->getSooth();
-
 		}
-	}
+    }
+
 	public function getAllSooths(){
-
 		return Sooth::all()->pluck('sooth');
-
 	}
 
 	public function showSooth()
