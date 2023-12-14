@@ -20,14 +20,16 @@ class SoothController extends Controller
 
 		if(!is_null($sooth_said)){
 			
-			return response()->json($sooth_said->sooth);
+			$sooth = json_encode($sooth_said->sooth);
 
 		}
 		else{
 
-			$this->getSooth();
+			$sooth = $this->getSooth();
 		
 		}
+	
+		return $sooth;
 
 
 	}
@@ -35,7 +37,10 @@ class SoothController extends Controller
 
 		$sooth_said = Sooth::all()->pluck('sooth');
 
-		return response()->json($sooth_said);
+		$sooths = json_encode($sooth_said);
+
+		return $sooths;
+
 
 	}
 
