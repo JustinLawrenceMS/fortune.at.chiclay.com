@@ -20,30 +20,32 @@ class SoothController extends Controller
 
 		if(!is_null($sooth_said)){
 			
-			$sooth = json_encode($sooth_said->sooth);
+			return $sooth_said->sooth;
 
 		}
 		else{
 
-			$sooth = $this->getSooth();
+			$this->getSooth();
 		
 		}
-	
-		return $sooth;
-
-
 	}
 	public function getAllSooths(){
-
-		$sooth_said = Sooth::all()->pluck('sooth');
-
-		$sooths = json_encode($sooth_said);
-
-		return $sooths;
-
+		
+		return Sooth::all()->pluck('sooth');
 
 	}
 
+	public function showSooth()
+	{
+		$sooth = $this->getSooth();
+		return response()->json($sooth);
+	}
+
+	public function showAllSooths()
+	{
+		$sooths = $this->getAllSooths();
+		return response()->json($sooths);
+	}
 
      /**
      * Display a listing of the resource.
@@ -52,9 +54,8 @@ class SoothController extends Controller
      */
     public function index()
     {
-	$sooth = $this->getSooth();
+	$sooth = json_encode($this->getSooth());
 	return view('welcome')->with('sooth', $sooth);
-
     }
 
 }
