@@ -11,7 +11,7 @@ class SoothController extends Controller
 	/**
 	 * retrieve the fortune
 	 *
-	 * return @string
+	 * @return string
 	 *
 	 */
 	public function getSooth(){
@@ -25,16 +25,34 @@ class SoothController extends Controller
 		}
     }
 
+    /**
+	 * retrieve all fortunes
+	 *
+	 * @return Collection
+	 *
+	 */
 	public function getAllSooths(){
 		return Sooth::all()->pluck('sooth');
 	}
 
+    /**
+     * show the fortune
+     *
+     * @return \Illuminate\Http\Response
+     *
+     */
 	public function showSooth()
 	{
 		$sooth = $this->getSooth();
 		return response()->json($sooth);
 	}
 
+    /**
+     * show all fortunes
+     *
+     * @return \Illuminate\Http\Response
+     *
+     */
 	public function showAllSooths()
 	{
 		$sooths = $this->getAllSooths();
