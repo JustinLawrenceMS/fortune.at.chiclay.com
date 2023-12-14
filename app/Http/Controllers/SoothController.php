@@ -11,7 +11,7 @@ class SoothController extends Controller
 	/**
 	 * retrieve the fortune
 	 *
-	 * return @string (json object)
+	 * return @string
 	 *
 	 */
 	public function getSooth(){
