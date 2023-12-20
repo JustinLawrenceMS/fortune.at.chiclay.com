@@ -14,8 +14,8 @@ class SoothController extends Controller
 	 * @return string
 	 *
 	 */
-	public function getSooth(){
-
+	public function getSooth()
+	{
 		$sooth_said = Sooth::find(rand(1,106));
 
 		if (!is_null($sooth_said)) {
@@ -31,7 +31,8 @@ class SoothController extends Controller
 	 * @return Collection
 	 *
 	 */
-	public function getAllSooths(){
+	public function getAllSooths()
+	{
 		return Sooth::all()->pluck('sooth');
 	}
 
