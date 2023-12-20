@@ -14,7 +14,8 @@ class SoothController extends Controller
 	 * @return string
 	 *
 	 */
-	public function getSooth(){
+    public function getSooth()
+    {
 
         $sooths = Sooth::whereNotNull('sooth')->get();
 
@@ -27,7 +28,8 @@ class SoothController extends Controller
 	 * @return Collection
 	 *
 	 */
-	public function getAllSooths(){
+	public function getAllSooths()
+	{
 		return Sooth::all()->pluck('sooth');
 	}
 
