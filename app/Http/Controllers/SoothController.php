@@ -23,7 +23,7 @@ class SoothController extends Controller
 		} else {
 			$this->getSooth();
 		}
-    }
+	}
 
     /**
 	 * retrieve all fortunes
