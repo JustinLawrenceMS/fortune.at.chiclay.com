@@ -8,6 +8,9 @@ use App\Models\Sooth;
 
 class SoothController extends Controller
 {
+
+    public $soothCount;
+
 	/**
 	 * retrieve the fortune
 	 *
@@ -16,10 +19,10 @@ class SoothController extends Controller
 	 */
     public function getSooth()
     {
+        $this->setSoothCount();
+        $sooth = Sooth::find(rand(1, $this->soothCount));
 
-        $sooths = Sooth::whereNotNull('sooth')->get();
-
-	    return $sooths[rand(0, count($sooths)-1)]->sooth;
+	    return $sooth->sooth;
     }
 
     /**
@@ -32,6 +35,17 @@ class SoothController extends Controller
 	{
 		return Sooth::all()->pluck('sooth');
 	}
+
+    /**
+     * set the soothCount
+     *
+     * @return void
+     *
+     */
+    public function setSoothCount()
+    {
+        $this->soothCount = Sooth::get()->count();
+    }
 
     /**
      * show the fortune
