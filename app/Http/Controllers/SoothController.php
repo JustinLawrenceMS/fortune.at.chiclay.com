@@ -19,10 +19,9 @@ class SoothController extends Controller
 	 */
     public function getSooth()
     {
-        $this->setSoothCount();
-        $sooth = Sooth::find(rand(1, $this->soothCount));
+        $sooth = Sooth::rand();
 
-	    return $sooth->sooth;
+	    return $sooth;
     }
 
     /**
@@ -35,17 +34,6 @@ class SoothController extends Controller
 	{
 		return Sooth::all()->pluck('sooth');
 	}
-
-    /**
-     * set the soothCount
-     *
-     * @return void
-     *
-     */
-    public function setSoothCount()
-    {
-        $this->soothCount = Sooth::get()->count();
-    }
 
     /**
      * show the fortune
@@ -78,7 +66,7 @@ class SoothController extends Controller
 	 */
 	public function index()
 	{
-		$sooth = json_encode($this->getSooth());
+		$sooth = $this->getSooth();
 		return view('welcome')->with('sooth', $sooth);
 	}
 
