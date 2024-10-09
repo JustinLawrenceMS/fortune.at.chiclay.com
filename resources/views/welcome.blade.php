@@ -81,8 +81,8 @@
 
 					<h4>Today's fortune.</h4>
 					<div class="sooth">
-						@if(isset($sooth))
-							{{ $sooth }}
+						@if(isset($sooth->sooth))
+							{{ $sooth->sooth }}
 							@endif
 					</div>
 				</div>

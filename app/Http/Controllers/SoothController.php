@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreSoothRequest;
 use App\Http\Requests\UpdateSoothRequest;
 use App\Models\Sooth;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Collection;
 
 class SoothController extends Controller
 {
@@ -17,7 +19,7 @@ class SoothController extends Controller
 	 * @return string
 	 *
 	 */
-    public function getSooth()
+    public function getSooth(): Sooth
     {
         $sooth = Sooth::rand();
 
@@ -30,33 +32,70 @@ class SoothController extends Controller
 	 * @return Collection
 	 *
 	 */
-	public function getAllSooths()
+	public function getAllSooths(): Collection
 	{
-		return Sooth::all()->pluck('sooth');
+		return Sooth::select('id', 'sooth', 'updated_at')->get();
 	}
+
+    /**
+     * format lists of sooth for json 
+     * response
+     */
+
+    public function formatSoothsList($sooths): array
+    {
+	    return $sooths->toArray();
+    }
 
     /**
      * show the fortune
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      *
      */
-	public function showSooth()
+	public function showSooth(): JsonResponse
 	{
-		$sooth = $this->getSooth();
-		return response()->json($sooth);
+		try {
+			$sooth = $this->getSooth();
+		} catch (\Throwable $e) {
+			$error = $e->message;
+			\Log::error('error in SoothController::showSooth ' . $error);
+		}
+
+		if (!isset($error)) {
+			return response()->json([
+				'data' => [
+					'id' => $sooth->id,
+					'sooth' => $sooth->sooth,
+					'updated_at' => $sooth->updated_at,
+				],
+				'meta' => [],
+				'error' => null,
+			], 200);
+		} else {
+			return response()->json([
+				'data' => [],
+				'meta' => [],
+				'error' => 'Something is foul in the State of Denmark. Check the logs.',
+			], 500);
+		}
 	}
 
     /**
      * show all fortunes
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      *
      */
-	public function showAllSooths()
+	public function showAllSooths(): JsonResponse
 	{
 		$sooths = $this->getAllSooths();
-		return response()->json($sooths);
+		$sooths = $this->formatSoothsList($sooths);
+		return response()->json([
+			'data' => $sooths,
+			'meta' => [],
+			'error' => null
+		], 200);
 	}
 
 	/**
