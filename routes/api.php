@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DonQuixoteTextController;
 use App\Http\Controllers\RampCTFController;
 use App\Http\Controllers\SoothController;
 use Illuminate\Http\Request;
@@ -21,6 +22,8 @@ Route::get('v1/sooths/fortune', [SoothController::class, 'showSooth']);
 Route::get('v1/sooths/all', [SoothController::class, 'showAllSooths']);
 
 Route::get('v1/ctf', [RampCTFController::class, 'showCTF']);
+
+Route::get('v1/donquixote', [DonQuixoteTextController::class, 'generate']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
