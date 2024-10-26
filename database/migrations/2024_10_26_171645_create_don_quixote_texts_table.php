@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('don_quixote_texts', function (Blueprint $table) {
             $table->id();
 	    $table->text('text');
+        $table->integer('text_length');
 	    $table->integer('word_count');
 	    $table->timestamps();
         });

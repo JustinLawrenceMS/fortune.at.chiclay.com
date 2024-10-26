@@ -15,6 +15,7 @@ class DonQuixoteTextSeeder extends Seeder
         foreach ($lines as $line) {
             DB::table('don_quixote_texts')->insert([
                 'text' => $line,
+                'text_length' => strlen($line),
                 'word_count' => count(explode(' ', $line)),
             ]);
         }

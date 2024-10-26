@@ -23,8 +23,9 @@ Route::get('v1/sooths/all', [SoothController::class, 'showAllSooths']);
 
 Route::get('v1/ctf', [RampCTFController::class, 'showCTF']);
 
-Route::get('v1/donquixote', [DonQuixoteTextController::class, 'generate']);
-
+Route::get('v1/donquixote/characters', [DonQuixoteTextController::class, 'generateByCharacters']);
+Route::get('v1/donquixote/words', [DonQuixoteTextController::class, 'generateByWords']);
+Route::get('v1/donquixote/sentences', [DonQuixoteTextController::class, 'generateBySentences']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class DonQuixoteText extends Model
 {
 	use HasFactory;
-	
-	protected $fillable = ['text', 'word_count'];
+
+	protected $fillable = ['text', 'text_length', 'word_count'];
 }
