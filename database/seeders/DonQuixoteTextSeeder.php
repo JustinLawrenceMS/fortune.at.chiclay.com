@@ -13,9 +13,13 @@ class DonQuixoteTextSeeder extends Seeder
 	    $lines = Storage::disk('local')->get('don_quixote.json');
 	    $lines = json_decode($lines, true);
         foreach ($lines as $line) {
+            $line = trim($line); // Remove leading/trailing whitespace
+            $line = preg_replace('/\s+/', ' ', $line); // Replace multiple spaces with single space
+            $line = preg_replace('/” “/', '“', $line);
+            $line = trim($line); // because sometimes it pads with " "
             DB::table('don_quixote_texts')->insert([
                 'text' => $line,
-                'text_length' => strlen($line),
+                'text_length' => mb_strlen($line, 'UTF-8'),
                 'word_count' => count(explode(' ', $line)),
             ]);
         }
