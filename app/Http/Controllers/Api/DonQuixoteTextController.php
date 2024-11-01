@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\DonQuixoteText;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Quixotify\Controller as Con;
+use Quixotify\Generator;
 
 class DonQuixoteTextController extends Controller
 {
@@ -23,30 +25,9 @@ class DonQuixoteTextController extends Controller
      */
     private function generateIpsumText(Request $request, string $type, int $amount)
     {
-        $startingText = DonQuixoteText::inRandomOrder()->first();
+        $generator = new Generator(new Con(new \PDO('sqlite:database.db')));
 
-        switch ($type) {
-            case 'characters':
-                $texts = DonQuixoteText::where('id', '>=', $startingText->id)
-                    ->take(ceil($amount / $startingText->text_length) + 1)
-                    ->get();
-                $text = Str::limit(implode(' ', $texts->pluck('text')->toArray()), $amount);
-                break;
-            case 'words':
-                $texts = DonQuixoteText::where('id', '>=', $startingText->id)
-                    ->take(ceil($amount / $startingText->word_count) + 1)
-                    ->get();
-                $text = implode(' ', explode(' ', implode(' ', $texts->pluck('text')->toArray()), $amount + 1));
-                break;
-            case 'sentences':
-                $texts = DonQuixoteText::where('id', '>=', $startingText->id)
-                    ->take($amount)
-                    ->get();
-                $text = implode(' ', $texts->pluck('text')->toArray());
-                break;
-            default:
-                abort(400, 'Invalid type');
-        }
+        $text = $generator->generate($type, $amount);
 
         return response()->json(['ipsum_text' => $text]);
     }
