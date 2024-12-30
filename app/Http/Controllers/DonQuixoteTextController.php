@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDonQuixoteTextRequest;
 use App\Http\Requests\UpdateDonQuixoteTextRequest;
-use App\Models\DonQuixoteText;
+use App\Models\DonQuixoteEnglishText;
 
 class DonQuixoteTextController extends Controller
 {
@@ -42,10 +42,10 @@ class DonQuixoteTextController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Http\Response
      */
-    public function show(DonQuixoteText $donQuixoteText)
+    public function show(DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }
@@ -53,10 +53,10 @@ class DonQuixoteTextController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Http\Response
      */
-    public function edit(DonQuixoteText $donQuixoteText)
+    public function edit(DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }
@@ -65,10 +65,10 @@ class DonQuixoteTextController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdateDonQuixoteTextRequest  $request
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDonQuixoteTextRequest $request, DonQuixoteText $donQuixoteText)
+    public function update(UpdateDonQuixoteTextRequest $request, DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }
@@ -76,10 +76,10 @@ class DonQuixoteTextController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DonQuixoteText $donQuixoteText)
+    public function destroy(DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }

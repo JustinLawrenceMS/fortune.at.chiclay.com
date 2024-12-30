@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 	    $this->call([
-		    \Database\Seeders\DonQuixoteTextSeeder::class,
-		    \Database\Seeders\SoothSeeder::class,
+		    \Database\Seeders\DonQuixoteEnglishTextSeeder::class,
+		    \Database\Seeders\DonQuixoteSpanishTextSeeder::class,
+            \Database\Seeders\SoothSeeder::class,
 	    ]);
 
 // \App\Models\User::factory(10)->create();

@@ -9,6 +9,7 @@
         "laravel-vite-plugin": "^0.7.8",
         "lodash": "^4.17.21",
         "postcss": "^8.4.38",
+        "somewhat": "github:JustinLawrenceMS/somewhat",
         "vite": "^4.5.3"
     }
 }

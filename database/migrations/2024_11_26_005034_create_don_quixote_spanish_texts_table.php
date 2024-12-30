@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('don_quixote_texts', function (Blueprint $table) {
+        Schema::create('don_quixote_spanish_texts', function (Blueprint $table) {
             $table->id();
-	    $table->text('text');
-        $table->integer('text_length');
-	    $table->integer('word_count');
-	    $table->timestamps();
+            $table->text('text');
+            $table->integer('text_length');
+            $table->integer('word_count');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('don_quixote_texts');
+        Schema::dropIfExists('don_quixote_spanish_texts');
     }
 };

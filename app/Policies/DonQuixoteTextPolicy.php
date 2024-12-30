@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\DonQuixoteText;
+use App\Models\DonQuixoteEnglishText;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -25,10 +25,10 @@ class DonQuixoteTextPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, DonQuixoteText $donQuixoteText)
+    public function view(User $user, DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }
@@ -48,10 +48,10 @@ class DonQuixoteTextPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, DonQuixoteText $donQuixoteText)
+    public function update(User $user, DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }
@@ -60,10 +60,10 @@ class DonQuixoteTextPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, DonQuixoteText $donQuixoteText)
+    public function delete(User $user, DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }
@@ -72,10 +72,10 @@ class DonQuixoteTextPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, DonQuixoteText $donQuixoteText)
+    public function restore(User $user, DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }
@@ -84,10 +84,10 @@ class DonQuixoteTextPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\DonQuixoteText  $donQuixoteText
+     * @param  \App\Models\DonQuixoteEnglishText  $donQuixoteText
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, DonQuixoteText $donQuixoteText)
+    public function forceDelete(User $user, DonQuixoteEnglishText $donQuixoteText)
     {
         //
     }

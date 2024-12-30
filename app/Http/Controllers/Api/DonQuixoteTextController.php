@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\DonQuixoteText;
+use App\Models\DonQuixoteEnglishText;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Quixotify\Controller as Con;
@@ -25,7 +25,8 @@ class DonQuixoteTextController extends Controller
      */
     private function generateIpsumText(Request $request, string $type, int $amount)
     {
-        $generator = new Generator(new Con(new \PDO('sqlite:database.db')));
+        $db = base_path('database.db');
+        $generator = new Generator(new Con(new \PDO('sqlite:' . $db)));
 
         $text = $generator->generate($type, $amount);
 
