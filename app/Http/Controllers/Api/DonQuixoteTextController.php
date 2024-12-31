@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\DonQuixoteEnglishText;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Quixotify\Controller as Con;
 use Quixotify\Generator;
 
@@ -14,7 +12,7 @@ class DonQuixoteTextController extends Controller
     private const DEFAULT_CHARACTERS = 500;
     private const DEFAULT_WORDS = 100;
     private const DEFAULT_SENTENCES = 5;
-
+    public string $language;
     /**
      * Generate ipsum text.
      *
@@ -25,10 +23,10 @@ class DonQuixoteTextController extends Controller
      */
     private function generateIpsumText(Request $request, string $type, int $amount)
     {
-        $db = base_path('database.db');
-        $generator = new Generator(new Con(new \PDO('sqlite:' . $db)));
+        $client = new Con($this->language);
+        $generator = new Generator($client);
 
-        $text = $generator->generate($type, $amount);
+        $text = $generator->generate($type, $amount, $request->input('language'));
 
         return response()->json(['ipsum_text' => $text]);
     }
@@ -41,6 +39,8 @@ class DonQuixoteTextController extends Controller
      */
     public function generateByCharacters(Request $request)
     {
+        $this->language = $request->input('language');
+
         $characters = $request->query('characters', self::DEFAULT_CHARACTERS);
 
         return $this->generateIpsumText($request, 'characters', $characters);
@@ -54,6 +54,8 @@ class DonQuixoteTextController extends Controller
      */
     public function generateByWords(Request $request)
     {
+        $this->language = $request->input('language');
+
         $words = $request->query('words', self::DEFAULT_WORDS);
 
         return $this->generateIpsumText($request, 'words', $words);
@@ -67,6 +69,8 @@ class DonQuixoteTextController extends Controller
      */
     public function generateBySentences(Request $request)
     {
+        $this->language = $request->input('language');
+
         $sentences = $request->query('sentences', self::DEFAULT_SENTENCES);
 
         return $this->generateIpsumText($request, 'sentences', $sentences);
