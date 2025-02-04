@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\DonQuixoteTextController;
+use App\Http\Controllers\Api\V2\DonQuixoteApiController;
 use App\Http\Controllers\RampCTFController;
 use App\Http\Controllers\SoothController;
 use Illuminate\Http\Request;
@@ -29,3 +30,5 @@ Route::get('v1/donquixote/sentences', [DonQuixoteTextController::class, 'generat
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('v2/donquixote', [DonQuixoteApiController::class, 'generate']);

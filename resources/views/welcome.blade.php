@@ -85,6 +85,20 @@
 							{{ $sooth->sooth }}
 							@endif
 					</div>
+					<h4>Also on fortune.at.chiclay.com</h4>
+					<div class="fortune">
+						The domain is also hosting
+						Don Quixote Ipsum API.  Here's
+						how you can use it.  
+						<a href="{{ url('api/v2/donquixote?type=characters&amount=200&language=Spanish') }}">{{ url("api/v2/donquixote?type=characters&amount=200&language=Spanish") }}</a>
+
+						"type" accepts the following values:
+							characters,
+							sentences,
+							words
+						"amount" accepts a positive integer
+						"language" can be "Spanish" or "English" or null (defaults to English)
+					</div>
 				</div>
 			</div>
 			<div class="col d-none d-sm-block">

@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Quixotify\Controller as Con;
 use Quixotify\Generator;
 
-class DonQuixoteTextController extends Controller
+class DonQuixoteApiController extends Controller
 {
     private const DEFAULT_CHARACTERS = 500;
     private const DEFAULT_WORDS = 100;
     private const DEFAULT_SENTENCES = 5;
-    public string|null $language;
+    public string|null $language = null;
     /**
      * Generate ipsum text.
      *
@@ -21,14 +21,21 @@ class DonQuixoteTextController extends Controller
      * @param  int  $amount
      * @return \Illuminate\Http\JsonResponse
      */
-    private function generateIpsumText(Request $request, string $type, int $amount)
+    private function generateIpsumText(Request $request, string $type=null, int $amount=null)
     {
+	    $type = $request->input('type');
+	    $amount = $request->input('amount');
         $client = new Con($this->language);
         $generator = new Generator($client);
 
         $text = $generator->generate($type, $amount, $request->input('language'));
 
         return response()->json(['ipsum_text' => $text]);
+    }
+
+    public function generate(Request $request)
+    {
+	    return $this->generateIpsumText($request);
     }
 
     /**
